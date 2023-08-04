@@ -39,6 +39,14 @@
   cursor: not-allowed;
   background-color: #ddd;
 }
+.todo .input button.update {
+  background-color: #634bd1;
+  color: white;
+}
+.todo .input button.update:hover {
+  background-color: rgb(255, 235, 205);
+  color: black;
+}
 
 .todo .item {
   display: flex;
