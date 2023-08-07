@@ -1,0 +1,33 @@
+.Arith div {
+  /* border: 1px solid green; */
+  margin: 10px;
+  padding: 2px;
+}
+
+.Arith .input div {
+  display: flex;
+  width: 35%;
+  margin: 0 auto;
+}
+.Arith .input div label {
+  flex: 1;
+  border: 1px solid black;
+}
+.Arith .input div input {
+  flex: 2;
+  text-align: center;
+}
+
+.Arith .result div {
+  display: flex;
+  width: 35%;
+  margin: 0 auto;
+}
+.Arith .result div strong {
+  flex: 1;
+  border: 1px solid black;
+}
+.Arith .result div span {
+  flex: 2;
+  border: 1px solid black;
+}
