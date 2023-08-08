@@ -3,31 +3,83 @@
   margin: 0;
   padding: 0;
 }
+html {
+  width: 100vw;
+  height: 100vh;
+}
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 100%;
+  height: 100%;
 }
 header.main {
   padding: 1.2rem;
-  background-color: #00b7ff;
   text-align: center;
+  font-family: "GangwonState";
+  font-size: 30px;
+  width: 50%;
+  margin: 0 auto;
 }
+header.main div.title {
+  position: relative;
+  border: 2px solid #03c75a;
+  padding: 20px;
+  color: #03c75a;
+}
+header.main div.title::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border-width: 0px 0px 50px 50px;
+  border-style: solid;
+  border-color: transparent transparent #03c75a transparent;
+  background-color: white;
+  width: 0;
+  height: 0;
+}
+
 nav.main {
-  background-color: #777;
+  background-color: #03c75a;
 }
 nav.main ul {
   list-style: none;
   display: flex;
+  width: 50%;
+  margin: 0 auto;
 }
 
 nav.main li {
   padding: 12px 16px;
+  color: white;
+  font-weight: bold;
+  font-family: "Giants-Bold";
+  font-size: 17px;
+}
+nav.main li:nth-of-type(4) {
+  margin-left: auto;
 }
 nav.main li:hover {
-  background-color: #555;
+  background-color: #2f7e14;
   color: white;
   cursor: pointer;
 }
 
 a {
   color: #00b7ff;
+}
+
+@font-face {
+  font-family: "GangwonState";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/GangwonState.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Giants-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
 }
