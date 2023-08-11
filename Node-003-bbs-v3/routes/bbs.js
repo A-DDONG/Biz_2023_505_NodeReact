@@ -24,9 +24,18 @@ const Hello = {
   message: "Hello NodeJS BBS World",
 };
 
+// multer 를 사용하여 파일을 수신할때 multer 가 파일이름을 latin1 방식으로 파일이름을 encoding 해버린다
+// windows 환경에서는 한글이름 파일이 깨진다. 한글이름을 UTF-8 로 변환시켜주는 함수
+const encKor = (str) => {
+  console.log(str);
+  return Buffer.from(str, "latin1").toString("UTF-8");
+};
+
 // 파일을 전송하기 위한 설정값 만들기
 const storageOption = {
   filename: (req, file, cb) => {
+    // 전송받은 파일을 encKor() 함수를 통하여 UTF-8 로 변환시키기
+    file.originalname = encKor(file.originalname);
     const originName = file.originalname;
     const filePrix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     const fileName = `${filePrix}-${originName}`;
@@ -49,6 +58,7 @@ router.get("/", async (req, res, next) => {
   //   res.send("<h1>나는 BBS Home 이야</h1>");
   res.json(Hello);
 });
+
 router.post("/insert", uploadMiddleWare.array("b_images"), async (req, res) => {
   const body = req.body;
   // multer MiddleWare 가 파일 관련 데이터를 필터링하고, 처리한 후 관련정보를 req.file 객체에 담아준다
@@ -75,7 +85,26 @@ router.post("/insert", uploadMiddleWare.array("b_images"), async (req, res) => {
 });
 
 router.get("/list", async (req, res) => {
-  const bbsList = await BBS.findAll();
+  // include
+  // sequelize 에서 1:N 관계까 설정되어 있을때 자동 JOIN 하는 코드
+  const bbsList = await BBS.findAll({
+    include: { model: FILES, as: "F_FILES" },
+  });
+  return res.json(bbsList);
+});
+
+// localhost:3000/bbs/detail/3 으로 요청이 되면 3이라는 값이 seq 변수에 담기게 된다
+// ?seq=값 => queryString 방식
+//          req.query.seq 로 값 받기
+// /:seq => PathVarriable 방식
+//          req.params.seq 로 받기
+// form 으로 전송한 데이터는 req.body 에 담겨서 통째로
+router.get("/detail/:seq", async (req, res) => {
+  const seq = req.params.seq;
+  const bbsList = await BBS.findOne({
+    where: { b_seq: seq },
+    include: { model: FILES, as: "F_FILES" },
+  });
   return res.json(bbsList);
 });
 
