@@ -1,0 +1,13 @@
+.input_box {
+  height: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.input_box input {
+  width: 150px;
+}
+.input_box button {
+  width: 65px;
+  margin-right: 30px;
+}
