@@ -17,18 +17,10 @@ const StyledInput = styled.input`
 
 const SearchInput = ({
   name = "input",
-  value = "",
   placeholder = "검색어를 입력하세요",
-  onChange,
+  ...args
 }) => {
-  return (
-    <StyledInput
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  );
+  return <StyledInput name={name} placeholder={placeholder} {...args} />;
 };
 
 export default SearchInput;

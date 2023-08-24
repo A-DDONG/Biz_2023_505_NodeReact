@@ -6,11 +6,28 @@
     margin: 7px auto;
     text-align: left;
     color: blue;
+
     &:hover {
       cursor: pointer;
     }
     & img {
       border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 10px 0 10px 10px;
+      /*
+      img 태그와 text 또는 inline 태그들이 서로 어울리는 배치를 하기 위한 설정
+      */
+      float: left;
+    }
+    & span {
+      display: inline-block;
+      line-height: 50px;
+      padding-left: 20px;
+    }
+    & div {
+      display: flex;
+      align-items: center;
     }
   }
   & a {
@@ -33,6 +50,9 @@
     &:hover {
       background: linear-gradient(145deg, #cacaca, #f0f0f0);
       //   border: 1px solid #aaa;
+    }
+    &.active {
+      color: red;
     }
   }
 }
