@@ -1,7 +1,7 @@
 import { Form, useLoaderData, redirect, useSubmit } from "react-router-dom";
 import css from "./BucketUpdate.module.scss";
 import Button from "../shareComps/Button";
-import { getBucket, saveBucket } from "../modules/bucketFetch";
+import { getBucket, saveBucket } from "../modules/firebaseDBProvider";
 import dImage from "../assets/default.png";
 import { useRef } from "react";
 
